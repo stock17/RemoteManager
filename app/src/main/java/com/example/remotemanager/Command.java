@@ -2,9 +2,9 @@ package com.example.remotemanager;
 
 public class Command {
     private Command.Type type;
-    private int value;
+    private double value;
 
-    public Command(Type type, int value) {
+    public Command(Type type, double value) {
         this.type = type;
         this.value = value;
     }
