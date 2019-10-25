@@ -8,16 +8,47 @@
 
     <it.beppi.knoblibrary.Knob
         android:id="@+id/knob"
-        android:layout_width="293dp"
-        android:layout_height="341dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
+        android:rotation="180"
+
+        app:kMinAngle="30"
+        app:kMaxAngle="330"
         app:kFreeRotation="false"
         app:kNumberOfStates="100"
-        app:kKnobRelativeRadius="0.5"
-        app:kMinAngle="15"
-        app:kMaxAngle="345"
         app:kDefaultState="0"
         app:kAnimation="false"
+
+        app:kStateMarkersColor="@android:color/holo_green_dark"
+        app:kIndicatorWidth="0dp"
+        app:kKnobRelativeRadius="1.2"
+        app:kBorderWidth="0dp"
+        app:kKnobDrawable="@drawable/volume_knob"
+        app:kKnobDrawableRotates="true"
          />
+
+    <com.ncorti.slidetoact.SlideToActView
+        android:id="@+id/slide_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:elevation="6dp"
+        app:area_margin="4dp"
+        app:outer_color="@color/colorPrimaryDark"
+        app:border_radius="24dp"
+        app:text="SLEEP"
+        app:text_size="32sp"
+        app:text_color="@android:color/primary_text_dark"
+        app:slider_height="64dp"
+         />
+
+
+
+
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.remotemanager;
 
-public class Command {
+import java.io.Serializable;
+
+public class Command implements Serializable {
     private Command.Type type;
     private double value;
 
@@ -9,7 +11,16 @@ public class Command {
         this.value = value;
     }
 
-    enum Type {
-        VOLUME_LEVEL
+    public Type getType() {
+        return type;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public enum Type {
+        VOLUME_LEVEL,
+        SLEEP
     }
 }
