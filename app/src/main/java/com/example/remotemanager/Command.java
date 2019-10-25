@@ -21,6 +21,9 @@ public class Command implements Serializable {
 
     public enum Type {
         VOLUME_LEVEL,
-        SLEEP
+        SLEEP,
+        PRESS_SPACE_KEY,
+        PRESS_LEFT_KEY,
+        PRESS_RIGHT_KEY
     }
 }

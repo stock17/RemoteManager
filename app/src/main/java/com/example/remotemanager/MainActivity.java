@@ -1,9 +1,14 @@
 package com.example.remotemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 import com.ncorti.slidetoact.SlideToActView;
 import it.beppi.knoblibrary.Knob;
@@ -23,6 +28,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button spaceButton = (Button) findViewById(R.id.space_button);
+        spaceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                networkThread.send(new Command(Command.Type.PRESS_SPACE_KEY, 0));
+            }
+        });
+
+        Button leftButton = (Button) findViewById(R.id.left_button);
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                networkThread.send(new Command(Command.Type.PRESS_LEFT_KEY, 0));
+            }
+        });
+
+        Button rightButton = (Button) findViewById(R.id.right_button);
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                networkThread.send(new Command(Command.Type.PRESS_RIGHT_KEY, 0));
+            }
+        });
+
+
+        buttonEffect(leftButton);
+        buttonEffect(rightButton);
+        buttonEffect(spaceButton);
+
 
         final SlideToActView sta = (SlideToActView) findViewById(R.id.slide_view);
         sta.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
@@ -56,6 +91,27 @@ public class MainActivity extends AppCompatActivity {
         networkThread.start();
         networkThread.prepareHandler();
         networkThread.setConnection();
+    }
+
+    public static void buttonEffect(View button){
+        button.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        v.getBackground().setColorFilter(0xe000000,PorterDuff.Mode.DARKEN);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP: {
+                        v.getBackground().clearColorFilter();
+                        v.invalidate();
+                        break;
+                    }
+                }
+                return false;
+            }
+        });
     }
 }
 
