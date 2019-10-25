@@ -16,7 +16,7 @@
         app:kMinAngle="30"
         app:kMaxAngle="330"
         app:kFreeRotation="false"
-        app:kNumberOfStates="100"
+        app:kNumberOfStates="101"
         app:kDefaultState="0"
         app:kAnimation="false"
 
