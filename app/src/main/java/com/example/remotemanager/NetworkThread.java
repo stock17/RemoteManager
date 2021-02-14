@@ -4,6 +4,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
+import com.yurima.remoteutils.Command;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
