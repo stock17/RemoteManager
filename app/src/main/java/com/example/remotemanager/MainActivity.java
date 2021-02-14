@@ -17,8 +17,8 @@ import it.beppi.knoblibrary.Knob;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int LEFT_BUTTON_CODE = 0x01;
-    private final int RIGHT_BUTTON_CODE = 0x02;
+    private final int LEFT_BUTTON_CODE = 0x25;
+    private final int RIGHT_BUTTON_CODE = 0x27;
     private final int SPACE_BUTTON_CODE = 0x20;
 
     NetworkThread networkThread;
