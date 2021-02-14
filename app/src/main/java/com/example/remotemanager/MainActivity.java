@@ -11,9 +11,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ncorti.slidetoact.SlideToActView;
+import com.yurima.remoteutils.Command;
+
 import it.beppi.knoblibrary.Knob;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final int LEFT_BUTTON_CODE = 0x01;
+    private final int RIGHT_BUTTON_CODE = 0x02;
+    private final int SPACE_BUTTON_CODE = 0x20;
 
     NetworkThread networkThread;
     Handler uiHandler;
@@ -33,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         spaceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkThread.send(new Command(Command.Type.PRESS_SPACE_KEY, 0));
+                networkThread.send(new Command(Command.Type.PRESS_KEY, SPACE_BUTTON_CODE));
             }
         });
 
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkThread.send(new Command(Command.Type.PRESS_LEFT_KEY, 0));
+                networkThread.send(new Command(Command.Type.PRESS_KEY, LEFT_BUTTON_CODE));
             }
         });
 
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkThread.send(new Command(Command.Type.PRESS_RIGHT_KEY, 0));
+                networkThread.send(new Command(Command.Type.PRESS_KEY, RIGHT_BUTTON_CODE));
             }
         });
 
