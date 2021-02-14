@@ -90,12 +90,12 @@ public class NetworkThread extends HandlerThread {
                 in = socket.getInputStream();
                 ois = new ObjectInputStream(in);
 
-                double currentVolumeLevel = ois.readDouble();
+                double currentVolumeLevel = ((Command) ois.readObject()).getValue();
                 Message message = uiHandler.obtainMessage();
                 message.obj = currentVolumeLevel;
                 uiHandler.sendMessage(message);
 
-            } catch (IOException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
